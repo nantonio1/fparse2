@@ -14,6 +14,11 @@ format. It supports schema-driven validation, defaults, and includes.
 - Immediate stop on any invalid input or missing required item
 
 ## Input file format
+The input format that `fparse` expects is simple and human-readable. It is 
+inspired by well-known formats like toml and yaml. However, ultimately I
+designed the format in a way I liked and thought would be easy to use.
+
+Below is an example of the format:
 
 ```
 # comment lines start with #
@@ -31,6 +36,9 @@ END
 - `#` starts a comment anywhere on a line.
 - A trailing `\` joins the next line to the current value.
 - `@include filename` inserts another file at that location.
+- Order of blocks or includes does not matter.
+- Keys belonging to a block must be between the block name and the `end`
+  statement.
 
 ## Integration as a git submodule
 It is recommended to include this repo as a git submodule in your project. This
@@ -68,6 +76,7 @@ You will need to adjust your compilation scripts to ensure `fparse` is compiled
 and linked with your project, and that the module files are in the search path.
 
 ## How to use in your fortran project
+Below is a high-level overview of how to use `fparse` in your Fortran project:
 
 1. Define a schema in your code using `init_schema`, `add_block`, and `add_key`.
 2. Parse an input file with `parse_input`.
@@ -81,7 +90,6 @@ parse an input file, and read an integer value:
 program main
     use fparse
     implicit none
-
     type(schema_type) :: schema
     type(input_tree_type) :: tree
     integer :: nelecs
@@ -92,6 +100,7 @@ program main
 
     call parse_input(schema, 'data.in', tree, 6)
     call get_integer(schema, tree, 'TARGET', 'nelecs', nelecs, 6)
+
 end program main
 ```
 
