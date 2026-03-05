@@ -1,0 +1,14 @@
+@include common.in
+@include grid.in
+
+SETTINGS
+[cutoff] 1.0e-3
+[levels] 1 2 3 4 \
+         5 6
+END
+
+OPTIONS
+[Use_Cache] On
+[flags] alpha beta \
+        gamma delta
+END

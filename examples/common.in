@@ -1,0 +1,7 @@
+# common target configuration
+TARGET
+[system] Be   # target name
+[nelecs] 4    # number of electrons
+[z] 4.0       # nuclear charge
+[terms] 1S+ 3S+ 1P- 3P+
+END
