@@ -1,7 +1,8 @@
 # fparse
 
 `fparse` is a Fortran library for parsing a simple block-based input file
-format. It supports schema-driven validation, defaults, and includes.
+format. I created it for my own projects and decided to share it in case others
+find it useful. 
 
 ## Features
 
